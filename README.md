@@ -6,7 +6,7 @@ request time**, **total downloaded volume** and **download speed**.
 
 ## Requirements
 
-- **Python 3.10+**, no third-party packages.
+- **Python 3.8+** (tested on 3.10), no third-party packages.
 
 ## Usage
 
@@ -35,11 +35,14 @@ Download speed    : 98.5 Mbit/s (12.31 MB/s)
 
 Decimal (SI) units, same convention providers advertise:
 
-- **Mbit/s** = 10⁶ bits/s; **MB/s** = 10⁶ bytes/s; **kB/MB/GB** = 10³/10⁶/10⁹ bytes.
-- Binary prefixes (KiB/MiB) are **never** used.
+- **Mbit/s** = 10⁶ bits/s (speed)
+- **MB/s** = 10⁶ bytes/s (speed)
+- **MB** = 10⁶ bytes (volume); the exact byte count is printed next to it.
+- Binary prefixes (KiB/MiB/GiB) are **never** used.
 
 ```
 speed_Mbit_s = total_body_bytes × 8 / total_request_time / 1e6
+speed_MB_s   = total_body_bytes     / total_request_time / 1e6
 ```
 
 ## How it works
@@ -56,7 +59,3 @@ files are latency-bound).
 | `0` | success |
 | `1` | usage/URL/connection error |
 | `130` | interrupted (Ctrl+C) |
-
-## License
-
-MIT.
